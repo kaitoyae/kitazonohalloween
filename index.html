@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 7th Kitazono Halloween - 北園商店会ハロウィンイベント</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header id="header">
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <a href="#hero" class="logo">
+                    <span class="logo-text">KITAZONO HALLOWEEN</span>
+                </a>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="#hero">ホーム</a></li>
+                <li><a href="#overview">イベント概要</a></li>
+                <li><a href="#contents">コンテンツ</a></li>
+                <li><a href="#gallery">ギャラリー</a></li>
+            </ul>
+            <div class="navbar-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 5.1. Hero Section -->
+        <section id="hero">
+            <div class="hero-video-wrapper">
+                <video id="hero-video-element" autoplay loop muted playsinline poster=""></video>
+            </div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1 class="hero-title"><span class="word">KITAZONO</span> <span class="word">HALLOWEEN</span></h1>
+                <h2 class="hero-subtitle">第7回 北園ハロウィン</h2>
+                <p class="hero-copy">街中が、魔法のステージに。家族みんなが、今日の主役。</p>
+                <a href="#overview" class="cta-button">イベント詳細を見る</a>
+            </div>
+            <div class="scroll-down"><span></span></div>
+        </section>
+
+        <!-- Introduction Section -->
+        <section id="introduction">
+            <div class="container">
+                <div class="introduction-content">
+                    <h2 class="introduction-title">ようこそ、一日だけの<br class="sp-only">秘密が隠された商店街へ。</h2>
+                    <div class="introduction-text">
+                        <p>手にした地図は、今日の物語のプロローグ。</p>
+                        <p>お店の片隅、ショーウィンドウの向こう側。<br>スタンプを探して歩くうちに、見慣れた景色はワクワクの舞台に変わっていく。</p>
+                        <p>これは、家族みんなが主役になれる、小さな探検の物語。</p>
+                        <p>日が落ちて、街が優しい光に灯される頃、<br>この日だけのナイトマルシェが現れます。<br>美味しい匂い、心ときめく雑貨、人々の楽しそうな笑い声。</p>
+                        <p>見つけるのは、スタンプや素敵なお店だけじゃない。<br>「あっちに行ってみよう！」と弾む声。<br>「これ、おいしいね」と交わす笑顔。</p>
+                        <p>そんな、何気ないけれど忘れられない瞬間という宝物を探しに、<br>今年のハロウィンは、北園商店街へお越しください。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5.2. Event Overview Section -->
+        <section id="overview">
+            <div class="deco-item deco-ghost-1">
+                <svg viewBox="0 0 100 100"><path d="M20 100 C-10 70, 0 30, 25 20 S80 10, 80 40 s-20 40, -10 60 C60 110, 40 100, 20 100" fill="#8338ec" opacity="0.15"></path></svg>
+            </div>
+            <div class="overview-card">
+                <div class="overview-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>日時</h3>
+                    <p>2025年10月28日(土)<br>16:00 - 21:00</p>
+                </div>
+                <div class="overview-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>場所</h3>
+                    <p>在家公園</p>
+                </div>
+                <div class="overview-item">
+                    <i class="fas fa-yen-sign"></i>
+                    <h3>参加費</h3>
+                    <p>無料<br>（一部コンテンツは有料）</p>
+                </div>
+                <div class="overview-item">
+                    <i class="fas fa-users"></i>
+                    <h3>対象</h3>
+                    <p>どなたでも<br>（特にファミリー層歓迎）</p>
+                </div>
+            </div>
+            <div class="deco-item deco-stars-1">
+                <svg viewBox="0 0 100 100"><polygon points="50,5 61,40 98,40 68,62 79,96 50,75 21,96 32,62 2,40 39,40" fill="#ffbe0b" opacity="0.4"></polygon></svg>
+            </div>
+        </section>
+
+        <!-- 5.3. Main Contents Section -->
+        <section id="contents">
+            <div class="deco-item deco-bat-1">
+                <svg viewBox="0 0 100 100"><path d="M0 20 C10 0, 40 0, 50 15 C60 0, 90 0, 100 20 L50 60 Z" fill="#2c2c3a" opacity="0.1"></path></svg>
+            </div>
+            <div class="content-card stamp-rally">
+                <div class="content-image-wrapper">
+                    <img src="images/決定北園ハロウィン 2.jpg" alt="仮想deスタンプラリーチラシ" class="content-flyer" />
+                </div>
+                <div class="content-text">
+                    <h3>スタンプラリー</h3>
+                    <p>お店とお家をまわってお菓子をもらおう！町会のお家もスタンプラリー参加！たくさんスタンプを集め、くじ引きにチャレンジで景品をゲット！</p>
+                    <button class="detail-button" data-modal="modal-stamp">詳しくはこちら</button>
+                </div>
+            </div>
+            <div class="content-card night-marche">
+                <div class="content-image-wrapper">
+                    <img src="images/決定ナイトマルシェ (1).jpg" alt="ナイトマルシェチラシ" class="content-flyer" />
+                </div>
+                <div class="content-text">
+                    <h3>ナイトマルシェ</h3>
+                    <p>ナイトマルシェは、大人の方も楽しめるようにお食事とお酒をご用意いたします。
+                        お洒落にライティングされた公園、ゆっくりと流れる時間の中で語り合いませんか？</p>
+                    <button class="detail-button" data-modal="modal-marche">詳しくはこちら</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5.4. Photo Gallery Section -->
+        <section id="gallery">
+            <div class="deco-item deco-pumpkin-1">
+                <svg viewBox="0 0 100 100"><ellipse cx="50" cy="65" rx="45" ry="30" fill="#ffbe0b" opacity="0.2"></ellipse><rect x="40" y="20" width="20" height="25" rx="5" fill="#8338ec" opacity="0.3"></rect></svg>
+            </div>
+            <h2 class="section-title">Photo Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item tall"><img src="images/IMG_7913.JPG" alt="ハロウィン仮装の集合写真1" class="gallery-photo" /></div>
+                <div class="gallery-item"><img src="images/IMG_7914.JPG" alt="ハロウィン仮装の集合写真2" class="gallery-photo" /></div>
+                <div class="gallery-item wide"><img src="images/IMG_7929.JPG" alt="ハロウィン仮装の集合写真3" class="gallery-photo" /></div>
+                <div class="gallery-item"><img src="images/受付１.JPG" alt="ハロウィン受付の様子" class="gallery-photo" /></div>
+                <div class="gallery-item wide"><div class="gallery-image-placeholder"></div></div>
+                <div class="gallery-item"><div class="gallery-image-placeholder"></div></div>
+                <div class="gallery-item tall"><div class="gallery-image-placeholder"></div></div>
+            </div>
+        </section>
+
+        <!-- 5.5. Footer Section -->
+        <footer>
+            <div class="footer-content">
+                <p>主催: 北園連合商店会</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+                <p class="copyright">&copy; 2025 Kitazono Halloween. All Rights Reserved.</p>
+            </div>
+        </footer>
+
+    </main>
+    
+    <!-- モーダル（スタンプラリー） -->
+    <div id="modal-stamp" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <img src="images/決定北園ハロウィン 2.jpg" alt="仮想deスタンプラリーチラシ拡大" class="modal-flyer" />
+        </div>
+    </div>
+    <!-- モーダル（ナイトマルシェ） -->
+    <div id="modal-marche" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <img src="images/決定ナイトマルシェ (1).jpg" alt="ナイトマルシェチラシ拡大" class="modal-flyer" />
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
