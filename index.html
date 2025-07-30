@@ -17,6 +17,7 @@
             </div>
             <ul class="navbar-menu">
                 <li><a href="#hero">ホーム</a></li>
+                <li><a href="#news">お知らせ</a></li>
                 <li><a href="#overview">イベント概要</a></li>
                 <li><a href="#contents">コンテンツ</a></li>
                 <li><a href="#gallery">ギャラリー</a></li>
@@ -32,21 +33,64 @@
     <main>
         <!-- 5.1. Hero Section -->
         <section id="hero">
-            <div class="hero-video-wrapper">
-                <video id="hero-video-element" autoplay loop muted playsinline poster=""></video>
+            <div class="hero-background">
+                <img src="images/helosection.png" alt="北園ハロウィン 商店街の夜景">
             </div>
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <h1 class="hero-title"><span class="word">KITAZONO</span> <span class="word">HALLOWEEN</span></h1>
-                <h2 class="hero-subtitle">第7回 北園ハロウィン</h2>
-                <p class="hero-copy">街中が、魔法のステージに。家族みんなが、今日の主役。</p>
-                <a href="#overview" class="cta-button">イベント詳細を見る</a>
+            <!-- 
+              コンテンツの最大幅と配置を制御するラッパー
+              w-full: 幅を100%に
+              max-w-md, md:max-w-2xl: 画面幅に応じて最大幅を調整
+              p-6, sm:p-8: 画面幅に応じた余白
+              mt-auto: コンテンツを下端に寄せる
+            -->
+            <div class="hero-container">
+                
+                <!-- メインコンテンツエリア -->
+                <div class="hero-main-content">
+                    <!-- 日付表示 -->
+                    <div class="hero-date-badge animate-fade-in-up animation-delay-200">
+                        <p class="text-white text-sm sm:text-base md:text-lg font-bold">2025.10.28 (土) 16:00-21:00</p>
+                    </div>
+
+                    <!-- タイトルとキャッチコピーを統合したラッパー -->
+                    <div class="hero-text-group animate-fade-in-up animation-delay-400">
+                        <h1 class="hero-main-title">北園ハロウィン</h1>
+                        <p class="hero-description">ようこそ、一日だけの秘密が隠された商店街へ。</p>
+                    </div>
+                </div>
+
+                <!-- バッジコンテナ（左右対称） -->
+                <div class="hero-badges-wrapper animate-fade-in-up animation-delay-800">
+                    <div class="feature-badge stamp-rally">
+                        <a href="#contents">
+                            <div class="feature-badge-icon">
+                                <i class="fas fa-map-marked-alt"></i>
+                            </div>
+                            <div class="feature-badge-text">仮装de<br>スタンプラリー</div>
+                        </a>
+                    </div>
+
+                    <div class="feature-badge night-marche">
+                        <a href="#contents">
+                            <div class="feature-badge-icon">
+                                <i class="fas fa-moon"></i>
+                            </div>
+                            <div class="feature-badge-text">ナイト<br>マルシェ</div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CTA（中央下） -->
+                <div class="hero-cta-wrapper animate-fade-in-up animation-delay-1000">
+                    <a href="#overview" class="cta-button">イベント詳細を見る</a>
+                </div>
+
             </div>
-            <div class="scroll-down"><span></span></div>
         </section>
 
         <!-- Introduction Section -->
         <section id="introduction">
+            <div class="magic-particles" id="particles-intro"></div>
             <div class="container">
                 <div class="introduction-content">
                     <h2 class="introduction-title">ようこそ、一日だけの<br class="sp-only">秘密が隠された商店街へ。</h2>
@@ -57,6 +101,27 @@
                         <p>日が落ちて、街が優しい光に灯される頃、<br>この日だけのナイトマルシェが現れます。<br>美味しい匂い、心ときめく雑貨、人々の楽しそうな笑い声。</p>
                         <p>見つけるのは、スタンプや素敵なお店だけじゃない。<br>「あっちに行ってみよう！」と弾む声。<br>「これ、おいしいね」と交わす笑顔。</p>
                         <p>そんな、何気ないけれど忘れられない瞬間という宝物を探しに、<br>今年のハロウィンは、北園商店街へお越しください。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="magic-frame-left"></div>
+            <div class="magic-frame-right"></div>
+        </section>
+
+        <!-- News Section -->
+        <section id="news">
+            <div class="container">
+                <h2 class="section-title">お知らせ</h2>
+                <div class="news-content">
+                    <div class="news-placeholder">
+                        <div class="news-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <h3 class="news-placeholder-title">お知らせ機能　準備中</h3>
+                        <p class="news-placeholder-text">
+                            最新情報をお届けする機能を準備しています。<br>
+                            しばらくお待ちください。
+                        </p>
                     </div>
                 </div>
             </div>
@@ -71,12 +136,23 @@
                 <div class="overview-item">
                     <i class="fas fa-calendar-alt"></i>
                     <h3>日時</h3>
-                    <p>2025年10月28日(土)<br>16:00 - 21:00</p>
+                    <p>2025年10月18日(土)、19日(日)</p>
                 </div>
                 <div class="overview-item">
                     <i class="fas fa-map-marker-alt"></i>
                     <h3>場所</h3>
                     <p>在家公園</p>
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d103480.75380377793!2d139.7099035!3d35.8545557!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60189522efb2ed95%3A0x3788a658be46e1dd!2sZaike%20Park!5e0!3m2!1sen!2sjp!4v1753842176701!5m2!1sen!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" 
+                            width="100%" 
+                            height="200" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
                 </div>
                 <div class="overview-item">
                     <i class="fas fa-yen-sign"></i>

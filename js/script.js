@@ -21,35 +21,44 @@ document.addEventListener('DOMContentLoaded', () => {
      * - Animates elements on page load.
      */
     const animateHero = () => {
-        // No need to splitText for .hero-title anymore
-        const tl = gsap.timeline();
+        const tl = gsap.timeline({ delay: 0.1 });
 
-        tl.from('.hero-title .word', {
-            y: '100%',
-            opacity: 0,
-            duration: 0.9,
-            ease: 'power3.out',
-            stagger: 0.18,
-        })
-        .from(['.hero-subtitle', '.hero-copy'], {
-            y: 30,
-            opacity: 0,
-            duration: 0.6,
-            ease: 'power2.out',
-            stagger: 0.2,
-        }, "-=0.6")
-        .from('.cta-button', {
-            y: 30,
-            opacity: 0,
-            duration: 0.6,
-            ease: 'power2.out',
-        }, "-=0.4")
-        .from('.hero-image-placeholder, .hero-video-wrapper', {
+        tl.from('.hero-background img', {
             scale: 1.1,
             opacity: 0,
-            duration: 1,
+            duration: 1.2,
             ease: 'power3.out',
-        }, "-=1.2");
+        })
+        .from('.hero-title', {
+            y: 40,
+            x: -20,
+            opacity: 0,
+            duration: 0.5,
+            ease: 'power2.out',
+        }, "-=0.8")
+        .from('.hero-catchphrase', {
+            y: 40,
+            x: 20,
+            opacity: 0,
+            duration: 0.5,
+            ease: 'power2.out',
+        }, "<")
+        .from('.feature-badge', {
+            scale: 0.5,
+            opacity: 0,
+            duration: 0.6,
+            ease: 'back.out(1.7)',
+            stagger: 0,
+            onComplete: function() {
+                gsap.set('.feature-badge', { opacity: 1, scale: 1 });
+            }
+        }, "-=0.2")
+        .from('.hero-bottom-info', {
+            y: 50,
+            opacity: 0,
+            duration: 0.6,
+            ease: 'back.out(1.7)',
+        }, "-=0.6");
     };
 
     /**
@@ -67,16 +76,190 @@ document.addEventListener('DOMContentLoaded', () => {
         tl.from('.introduction-title', {
             opacity: 0,
             y: 40,
-            duration: 0.8,
+            duration: 0.6,
             ease: 'power3.out',
         })
         .from('.introduction-text p', {
             opacity: 0,
             y: 20,
-            duration: 0.6,
+            duration: 0.4,
             ease: 'power2.out',
-            stagger: 0.2,
-        }, "-=0.5");
+            stagger: 0.1,
+        }, "-=0.3");
+    };
+
+    /**
+     * Enhanced Magic Particles Effect for Introduction Section
+     */
+    const createMagicParticles = () => {
+        const particleContainer = document.getElementById('particles-intro');
+        if (!particleContainer) return;
+
+        // Create floating light orbs
+        for (let i = 0; i < 20; i++) {
+            const particle = document.createElement('div');
+            const size = Math.random() * 8 + 3;
+            const colors = [
+                'rgba(255,190,11,0.7)',    /* 元の黄色 */
+                'rgba(131,56,236,0.6)',    /* 元の紫色 */
+                'rgba(255,182,193,0.5)',   /* 控えめなピンク */
+                'rgba(161,95,251,0.5)',    /* 明るい紫 */
+                'rgba(255,215,0,0.6)'      /* 控えめなゴールド */
+            ];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            
+            particle.style.cssText = `
+                position: absolute;
+                width: ${size}px;
+                height: ${size}px;
+                background: radial-gradient(circle, ${color} 0%, transparent 70%);
+                border-radius: 50%;
+                left: ${Math.random() * 100}%;
+                top: ${Math.random() * 100}%;
+                pointer-events: none;
+                box-shadow: 0 0 ${size * 2}px ${color.replace('0.', '0.3')};
+            `;
+            
+            particleContainer.appendChild(particle);
+            
+            // Complex floating animation
+            gsap.to(particle, {
+                y: `+=${Math.random() * 200 - 100}`,
+                x: `+=${Math.random() * 300 - 150}`,
+                scale: Math.random() * 0.5 + 0.8,
+                opacity: 0,
+                rotation: Math.random() * 360,
+                duration: Math.random() * 15 + 8,
+                repeat: -1,
+                ease: 'sine.inOut',
+                delay: Math.random() * 3,
+                yoyo: true,
+            });
+        }
+
+        // Create magical sparkles
+        for (let i = 0; i < 12; i++) {
+            const sparkle = document.createElement('div');
+            const sparkleTypes = ['✦', '◆', '★', '◇', '▲'];
+            sparkle.innerHTML = sparkleTypes[Math.floor(Math.random() * sparkleTypes.length)];
+            sparkle.style.cssText = `
+                position: absolute;
+                font-size: ${Math.random() * 20 + 8}px;
+                left: ${Math.random() * 100}%;
+                top: ${Math.random() * 100}%;
+                pointer-events: none;
+                opacity: 0.4;
+                color: ${Math.random() > 0.5 ? '#ffbe0b' : '#8338ec'};
+                text-shadow: 0 0 10px currentColor;
+            `;
+            
+            particleContainer.appendChild(sparkle);
+            
+            // Twinkling animation
+            gsap.to(sparkle, {
+                rotation: 360,
+                scale: Math.random() * 0.8 + 0.5,
+                opacity: Math.random() * 0.8 + 0.2,
+                duration: Math.random() * 6 + 3,
+                repeat: -1,
+                ease: 'power2.inOut',
+                yoyo: true,
+                delay: Math.random() * 2,
+            });
+        }
+
+        // Create floating geometric shapes
+        for (let i = 0; i < 6; i++) {
+            const shape = document.createElement('div');
+            const shapeSize = Math.random() * 15 + 8;
+            const shapeTypes = ['circle', 'triangle', 'square'];
+            const shapeType = shapeTypes[Math.floor(Math.random() * shapeTypes.length)];
+            
+            let shapeCSS = `
+                position: absolute;
+                width: ${shapeSize}px;
+                height: ${shapeSize}px;
+                left: ${Math.random() * 100}%;
+                top: ${Math.random() * 100}%;
+                pointer-events: none;
+                opacity: 0.3;
+            `;
+            
+            if (shapeType === 'circle') {
+                shapeCSS += `
+                    background: linear-gradient(45deg, rgba(255,190,11,0.5), rgba(131,56,236,0.4));
+                    border-radius: 50%;
+                `;
+            } else if (shapeType === 'triangle') {
+                shapeCSS += `
+                    background: transparent;
+                    border-left: ${shapeSize/2}px solid transparent;
+                    border-right: ${shapeSize/2}px solid transparent;
+                    border-bottom: ${shapeSize}px solid rgba(131,56,236,0.5);
+                    width: 0;
+                    height: 0;
+                `;
+            } else {
+                shapeCSS += `
+                    background: linear-gradient(135deg, rgba(161,95,251,0.4), rgba(255,182,193,0.3));
+                    transform: rotate(45deg);
+                `;
+            }
+            
+            shape.style.cssText = shapeCSS;
+            particleContainer.appendChild(shape);
+            
+            // Slow drift animation
+            gsap.to(shape, {
+                y: `+=${Math.random() * 150 - 75}`,
+                x: `+=${Math.random() * 150 - 75}`,
+                rotation: Math.random() * 720 - 360,
+                duration: Math.random() * 20 + 15,
+                repeat: -1,
+                ease: 'none',
+                yoyo: true,
+                delay: Math.random() * 5,
+            });
+        }
+    };
+
+    /**
+     * News Section Animation
+     */
+    const animateNews = () => {
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: '#news',
+                start: 'top 80%',
+                toggleActions: 'play none none none',
+            }
+        });
+
+        tl.from('.news-placeholder', {
+            opacity: 0,
+            y: 50,
+            scale: 0.9,
+            duration: 0.8,
+            ease: 'power3.out',
+        })
+        .from('.news-icon', {
+            scale: 0,
+            rotation: -180,
+            duration: 0.6,
+            ease: 'back.out(1.7)',
+        }, "-=0.4")
+        .from('.news-placeholder-title', {
+            opacity: 0,
+            y: 20,
+            duration: 0.5,
+            ease: 'power2.out',
+        }, "-=0.3")
+        .from('.news-placeholder-text', {
+            opacity: 0,
+            y: 15,
+            duration: 0.4,
+            ease: 'power2.out',
+        }, "-=0.2");
     };
 
     /**
@@ -227,11 +410,59 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Fire all animations ---
     animateHero();
+    createMagicParticles();
     animateIntroduction();
+    animateNews();
     animateOverview();
     animateContents();
     animateGallery();
     animateDecorations();
+
+    // --- Gallery Lightbox ---
+    const initGalleryLightbox = () => {
+        // Create modal HTML
+        const modal = document.createElement('div');
+        modal.className = 'gallery-modal';
+        modal.innerHTML = `
+            <div class="gallery-modal-content">
+                <span class="gallery-modal-close">&times;</span>
+                <img src="" alt="Gallery Image">
+            </div>
+        `;
+        document.body.appendChild(modal);
+
+        const modalImg = modal.querySelector('img');
+        const closeBtn = modal.querySelector('.gallery-modal-close');
+
+        // Add click handlers to gallery photos
+        document.querySelectorAll('.gallery-photo').forEach(photo => {
+            photo.addEventListener('click', () => {
+                modalImg.src = photo.src;
+                modalImg.alt = photo.alt;
+                modal.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Close modal handlers
+        const closeModal = () => {
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
+        };
+
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('open')) {
+                closeModal();
+            }
+        });
+    };
+
+    initGalleryLightbox();
 
     // --- Modal (Lightbox) for flyers ---
     const openModal = (modalId) => {
@@ -267,6 +498,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Dynamic Hero Video Source ---
+    // This part is no longer needed as we switched to a static image.
+    /*
     const videoElement = document.getElementById('hero-video-element');
     if (videoElement) {
         const landscapeVideoSrc = 'images/video-landscape.mp4';
@@ -301,5 +534,5 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update on resize
         window.addEventListener('resize', handleResize);
     }
-
+    */
 });
