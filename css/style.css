@@ -1244,6 +1244,51 @@ br.sp-only {
     font-weight: 400;
 }
 
+/* 日時セクションのコンパクト表示 */
+.event-dates-compact {
+    text-align: center;
+}
+
+.main-dates {
+    margin: 0 0 calc(var(--spacing-unit) * 1) 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-white);
+    text-shadow: 0 2px 6px rgba(44, 44, 58, 0.6);
+}
+
+.schedule-compact {
+    margin-bottom: calc(var(--spacing-unit) * 0.8);
+}
+
+.day-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: calc(var(--spacing-unit) * 0.3) 0;
+    font-size: 0.85rem;
+}
+
+.day-label {
+    color: var(--color-secondary);
+    font-weight: 700;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    min-width: 40px;
+    text-align: left;
+}
+
+.times {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+}
+
+.reception-note {
+    margin: 0;
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.65);
+    font-style: italic;
+}
+
 .map-container {
     width: 100%;
     height: 120px;
@@ -1672,6 +1717,32 @@ br.sp-only {
     .overview-item p {
         font-size: clamp(0.85rem, 3vw, 0.95rem);
         line-height: 1.6;
+    }
+    
+    /* 日時セクションのモバイル対応 */
+    .main-dates {
+        font-size: clamp(0.85rem, 3.5vw, 0.95rem);
+    }
+    
+    .day-row {
+        font-size: clamp(0.75rem, 3vw, 0.85rem);
+        flex-direction: column;
+        align-items: center;
+        gap: calc(var(--spacing-unit) * 0.3);
+        text-align: center;
+    }
+    
+    .day-label {
+        font-size: clamp(0.75rem, 3vw, 0.85rem);
+        min-width: auto;
+    }
+    
+    .times {
+        font-size: clamp(0.7rem, 2.8vw, 0.8rem);
+    }
+    
+    .reception-note {
+        font-size: clamp(0.65rem, 2.5vw, 0.72rem);
     }
     
     .map-container {
