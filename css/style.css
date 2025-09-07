@@ -458,12 +458,14 @@ section {
 /* モバイル（480px以下） */
 @media (max-width: 480px) {
     .hero-container {
-        padding: 3rem 1.5rem; /* パディングを調整 */
+        /* ヘッダーと重ならないように上の余白を増やす */
+        padding: 10rem 1.5rem 2.5rem; 
     }
     
     .hero-main-content {
-        align-items: center; /* 中央揃え */
-        text-align: center;
+        align-items: flex-start; /* 左揃え（スマホのみ） */
+        justify-content: flex-start; /* 上寄せ（スマホのみ） */
+        text-align: left; /* 左揃え（スマホのみ） */
     }
     
     .hero-main-title {
@@ -500,12 +502,13 @@ section {
 /* タブレット（481px - 768px） */
 @media (min-width: 481px) and (max-width: 768px) {
     .hero-container {
-        padding: 4.5rem 2rem; /* パディングを調整 */
+        padding: 8rem 2rem; /* パディングを調整 */
     }
     
     .hero-main-content {
-        align-items: center; /* 中央揃え */
-        text-align: center;
+        align-items: flex-start; /* 左配置 */
+        justify-content: flex-start; /* 上寄せ */
+        text-align: left;    /* テキストは左揃え */
     }
     
     .hero-main-title {
@@ -515,6 +518,7 @@ section {
     
     .hero-text-group {
         padding: 1rem 1.2rem;
+        text-align: left; /* 左揃え */
     }
     
     .hero-badges-wrapper {
@@ -779,7 +783,7 @@ section {
     }
 }
 
-/* Desktop Hero */
+/* Desktop Hero (small PC widths) */
 @media (min-width: 1024px) and (max-width: 1439px) {
     .hero-title {
         font-size: clamp(3.5rem, 6vw, 5rem);
@@ -791,6 +795,13 @@ section {
     
     .feature-badges-container {
         top: 69%;
+    }
+
+    /* Ensure circular badges are large enough so text doesn't overflow
+       around ~1270px viewport widths */
+    .feature-badge {
+        width: 170px;
+        height: 170px;
     }
 }
 
@@ -1190,6 +1201,47 @@ br.sp-only {
     opacity: 0.9;
 }
 
+/* Make news cards clickable without losing color */
+.news-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* News list page layout */
+.news-list {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing-unit) * 3);
+}
+
+.news-list .news-placeholder {
+  text-align: left;
+}
+
+.news-list .news-placeholder-title {
+  margin-bottom: 8px;
+}
+
+/* News meta/date and actions */
+.news-meta {
+  margin: 0 0 8px 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+}
+
+.news-actions {
+  text-align: center;
+  margin-top: 12px;
+}
+
+.news-all-link {
+  color: var(--color-secondary);
+  text-decoration: underline;
+}
+
 
 /* === 5.2. Event Overview Section === */
 #overview {
@@ -1302,6 +1354,30 @@ br.sp-only {
     width: 100%;
     height: 100%;
     border: none;
+}
+
+/* 日時セクション（シンプル表示） */
+.event-dates-simple {
+    text-align: center;
+}
+.dates-inline {
+    display: inline-flex;
+    gap: 0.75em;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 0 calc(var(--spacing-unit) * 0.8) 0;
+    font-weight: 700;
+}
+.date-range {
+    color: var(--color-white);
+    font-size: 0.95rem;
+    text-shadow: 0 2px 6px rgba(44, 44, 58, 0.6);
+}
+.times-inline {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+    font-weight: 700;
 }
 
 /* === 5.3. Main Contents Section === */
@@ -1595,6 +1671,22 @@ br.sp-only {
         grid-auto-rows: 180px;
         gap: calc(var(--spacing-unit) * 1.5);
     }
+
+    /* Event dates: show 25日/26日 side-by-side */
+    .event-dates-compact .schedule-compact {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: calc(var(--spacing-unit) * 1.5);
+    }
+    .event-dates-compact .day-row {
+        /* Keep label and time stacked within each column */
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 48%;
+        box-sizing: border-box;
+    }
 }
 
 /* Mobile Responsive */
@@ -1724,12 +1816,21 @@ br.sp-only {
         font-size: clamp(0.85rem, 3.5vw, 0.95rem);
     }
     
+    /* 25日/26日を横並びにする */
+    .event-dates-compact .schedule-compact {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: calc(var(--spacing-unit) * 1);
+    }
     .day-row {
         font-size: clamp(0.75rem, 3vw, 0.85rem);
         flex-direction: column;
         align-items: center;
         gap: calc(var(--spacing-unit) * 0.3);
         text-align: center;
+        width: 48%;
+        box-sizing: border-box;
     }
     
     .day-label {
