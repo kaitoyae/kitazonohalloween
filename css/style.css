@@ -1160,6 +1160,8 @@ br.sp-only {
     margin: 0 auto;
     text-align: center;
     padding: 0 calc(var(--spacing-unit) * 2);
+    display: grid;
+    gap: calc(var(--spacing-unit) * 4); /* keep clear gap below card even on hover */
 }
 
 .news-placeholder {
@@ -1171,6 +1173,7 @@ br.sp-only {
     padding: calc(var(--spacing-unit) * 6);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 0;
 }
 
 .news-placeholder:hover {
@@ -1206,6 +1209,8 @@ br.sp-only {
   display: block;
   text-decoration: none;
   color: inherit;
+  position: relative;
+  z-index: 1; /* keep below actions */
 }
 
 /* News list page layout */
@@ -1234,7 +1239,9 @@ br.sp-only {
 
 .news-actions {
   text-align: center;
-  margin-top: 12px;
+  margin-top: 0; /* spacing handled by parent gap */
+  position: relative;
+  z-index: 3; /* ensure link is not hidden under the card */
 }
 
 .news-all-link {
@@ -1619,6 +1626,7 @@ br.sp-only {
     /* News Section */
     .news-placeholder {
         padding: calc(var(--spacing-unit) * 5);
+        position: relative;
     }
     
     .news-icon {
